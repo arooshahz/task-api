@@ -1,0 +1,13 @@
+[Unit]
+Description=Task API FastAPI Service
+After=network.target
+
+[Service]
+User=YOUR_USERNAME
+WorkingDirectory=/path/to/task-api
+Environment="PATH=/path/to/task-api/.venv/bin"
+ExecStart=/path/to/task-api/.venv/bin/gunicorn app.main:app -w 4 -k uvicorn.workers.UvicornWorker
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
